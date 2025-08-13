@@ -72,13 +72,13 @@ cd tu_repositorio
 ```
 ### 2. Configurar el entorno
 
-* Crea un entorno virtual e instala las dependencias (se recomienda crear un archivo `requirements.txt`).
+* Crea un entorno virtual e instala las dependencias.
 * Instala PostgreSQL y habilita la extensión `pgvector`.
-* [cite_start]Crea una base de datos (`SSAbstracts`) y un usuario (`postgres`)[cite: 5].
+* Crea una base de datos (`SSAbstracts`) y un usuario (`postgres`)[cite: 5].
 
 ### 3. Configurar variables de entorno
 
-* [cite_start]Crea un archivo `.env` a partir de un ejemplo y añade tus credenciales de la base de datos[cite: 5].
+* Crea un archivo `.env` a partir de un ejemplo y añade tus credenciales de la base de datos[cite: 5].
 
 ### 4. Poblar la base de datos
 
