@@ -1,0 +1,38 @@
+CREATE INDEX indice_abstracts
+ON papers 
+USING ivfflat (abstract_embedding vector_cosine_ops) 
+WITH (lists = 200); 
+SET LOCAL ivfflat.probes = 100;
+
+
+CREATE INDEX indice_abstracts
+ON papers 
+USING hnsw (abstract_embedding vector_cosine_ops)
+WITH (m = 16, ef_construction = 64); 
+
+SET LOCAL hnsw.ef_search = 50;
+
+DROP INDEX indice_abstracts;
+SELECT
+    pp.id AS papersprueba_id,
+    pp.title AS papersprueba_titulo,
+    pp.abstract AS papersprueba_abstract,
+    sp.id AS paper_similar_id,
+    sp.title AS paper_similar_titulo,
+    sp.abstract AS paper_similar_abstract,
+    sp.distancia AS distancia
+FROM
+    papersprueba pp
+LEFT JOIN LATERAL (
+    SELECT
+        p.id,
+        p.title,
+        p.abstract,
+        (p.abstract_embedding <=> pp.abstract_embedding) AS distancia
+    FROM
+        papers p
+
+    ORDER BY
+        p.abstract_embedding <=> pp.abstract_embedding ASC
+    LIMIT 5 
+) sp ON TRUE;
