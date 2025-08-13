@@ -51,6 +51,7 @@ El flujo de trabajo del proyecto se divide en dos fases principales: la ingesta 
 ├── .env                  # Archivo de configuración para la base de datos
 ├── main.py               # Script para procesar datos y poblar la BD
 ├── streamlit_app.py      # Aplicación web para la búsqueda de similitud
+├── SQLquery.txt
 ├── src/
 │   ├── data_processing.py  # Procesamiento y limpieza de datos
 │   ├── embedding.py        # Generación de embeddings
